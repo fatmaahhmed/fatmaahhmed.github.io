@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatma Ahmed - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .title {
+            font-size: 1.3em;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            color: #667eea;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .experience-item, .education-item, .cert-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover, .cert-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item h3, .education-item h3, .cert-item h3 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 8px;
+        }
+
+        .experience-item .company, .education-item .institution {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .date, .education-item .date, .cert-item .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+
+        .experience-item li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8em;
+            top: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-link {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .languages {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .badge {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header fade-in floating">
+            <h1>Fatma Ahmed</h1>
+            <div class="title">Red Hat Certified System Administrator</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+20 109 982 8039</span>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>fatmaahmed222003@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>🔗</span>
+                    <span>GitHub</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </div>
+            </div>
+            
+            <div class="summary">
+                <strong>Red Hat Certified System Administrator</strong> with experience in backend development and DevOps. Built and deployed web applications using Node.js and Django, and automated infrastructure using Docker and Kubernetes. Trained at <strong>ITI on Linux system administration and cloud infrastructure.</strong>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Software Engineer <span class="company">– Eyego</span></h3>
+                <div class="date">Nov 2024 – Present</div>
+                <ul>
+                    <li>Focused on backend services and DevOps automation for scalable web platforms</li>
+                    <li>Built a real-time notification system using <strong>Kafka</strong> and <strong>WebSockets</strong></li>
+                    <li>Developed and managed a full dev environment with <strong>Docker Compose</strong></li>
+                    <li>Designed CI/CD pipelines using <strong>GitHub Actions</strong></li>
+                    <li>Deployed production services on <strong>GCP</strong> with <strong>Kubernetes</strong></li>
+                    <li>Worked across backend and DevOps to deliver scalable, cloud-native systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Information Technology Institute (ITI) – System Administration Track</h3>
+                <div class="date">Mar 2025 – July 2025</div>
+            </div>
+            <div class="education-item">
+                <h3>Cairo University – B.Sc. in Computer Science</h3>
+                <div class="institution">(Artificial Intelligence department)</div>
+                <div class="date">2024</div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Certifications</h2>
+            <div class="cert-item">
+                <h3>Red Hat Certified System Administrator (RHCSA) <span class="badge">Expires: 2028</span></h3>
+                <div class="date">Credly Badge</div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>DevOps & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Ansible</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Microsoft Azure</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Operating Systems & Networking</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux (RHCSA)</span>
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">VLANs</span>
+                        <span class="skill-tag">CCNA Fundamentals</span>
+                        <span class="skill-tag">VMware vSphere</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Scripting</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Bash</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Swagger</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Infrastructure Project (Windows Server – MCSA)</h3>
+                    <p><strong>Simulated Corporate IT Environment – ITI.local (Windows Server 2019)</strong></p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Set up Domain Controller (DC), Additional DC (ADC), Read-Only DC (RODC), and child domains</li>
+                        <li>Configured DNS, DHCP, Group Policy Objects (GPOs), and FTP services</li>
+                        <li>Applied enterprise-level policies: password complexity, USB access restrictions, and desktop customization via GPO</li>
+                        <li>Deployed multiple IIS-hosted websites, enabled roaming profiles, and implemented automated software deployment across users</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3>AI Quiz Generator <a href="#" class="project-link">🔗 App Link</a></h3>
+                    <p>Built with Next.js and LangChain to generate quizzes using AI prompts.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Kafka Notification Service <a href="#" class="project-link">🔗 App Link</a></h3>
+                    <p>Built a real-time notification system using Node.js, Kafka, and MongoDB. It delivers messages via WebSocket if the user is online, or stores them for later delivery when offline.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>E-Commerce Backend <a href="#" class="project-link">🔗 App Link</a></h3>
+                    <p>This project is a fully functional e-commerce store API built using Node.js, Express, and Mongoose. It demonstrates my hands-on experience in developing professional-level RESTful APIs, including features for product management, user authentication, shopping cart functionality, payment integration, and more.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Task Manager App <a href="#" class="project-link">🔗 App Link</a></h3>
+                    <p>Developed a full-stack MERN app with JWT authentication and task/user management.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Student Affairs System</h3>
+                    <p>A Django-based app for managing student records and academic data.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Courses API</h3>
+                    <p>RESTful API with data validation, pagination, and clean code structure using Django.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <h2>Languages</h2>
+            <div class="languages">
+                <div class="language-item">Arabic (Native)</div>
+                <div class="language-item">English (Fluent)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease-in-out';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover effects for project links
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Project link would redirect to the actual project URL');
+            });
+        });
+
+        // Add smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
